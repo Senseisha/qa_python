@@ -46,3 +46,12 @@ class TestBooksCollector:
         collector.set_book_genre(name, genre)
 
         assert collector.books_genre.get(name) == genre
+
+    def test_test_set_book_genre_if_book_in_books_genre_and_her_genre_not_in_genre_true(self):
+        collector = BooksCollector()
+        name = '12 стульев'
+        genre = 'Мелодрама'
+        collector.add_new_book(name)
+        collector.set_book_genre(name, genre)
+
+        assert collector.books_genre.get(name) != genre
