@@ -30,3 +30,10 @@ class TestBooksCollector:
         collector.add_new_book(name)
 
         assert collector.books_genre.get(name) is None
+
+    def test_add_new_book_without_genre_true(self):
+        collector = BooksCollector()
+        name = 'Идиот'
+        collector.add_new_book(name)
+
+        assert collector.books_genre[name] == ''
