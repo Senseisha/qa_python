@@ -1,5 +1,6 @@
-from .main import BooksCollector
+import pytest
 
+from .main import BooksCollector
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
@@ -101,7 +102,7 @@ class TestBooksCollector:
 
         assert book not in books_for_children
 
-    def test_add_book_in_favorites(self, collector):
+    def test_add_book_in_favorites_true(self, collector):
         book = '12 стульев'
         collector.add_new_book(book)
         collector.add_book_in_favorites(book)
@@ -109,3 +110,21 @@ class TestBooksCollector:
         favorite = collector.get_list_of_favorites_books()
 
         assert book in favorite
+
+    @pytest.mark.parametrize(
+        'name,books_count',
+        [
+            (['12 стульев'], 1),
+            (['Гарри Поттер', 'Идиот'], 2),
+            ([], 0)
+        ]
+    )
+
+    def test_add_book_in_favorites_true_add_a_few_books_true(self, collector, name, books_count):
+        for book_name in name:
+            collector.add_new_book(book_name)
+            collector.add_book_in_favorites(book_name)
+
+        favorite = collector.get_list_of_favorites_books()
+
+        assert len(favorite) == books_count
