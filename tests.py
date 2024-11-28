@@ -100,3 +100,12 @@ class TestBooksCollector:
         books_for_children = collector.get_books_for_children()
 
         assert book not in books_for_children
+
+    def test_add_book_in_favorites(self, collector):
+        book = '12 стульев'
+        collector.add_new_book(book)
+        collector.add_book_in_favorites(book)
+
+        favorite = collector.get_list_of_favorites_books()
+
+        assert book in favorite
