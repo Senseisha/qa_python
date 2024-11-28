@@ -82,7 +82,7 @@ class TestBooksCollector:
 
         dict = collector.get_books_genre()
 
-        assert dict
+        assert '12 стульев' in dict
 
     def test_get_books_for_children_true(self, collector):
         book = 'Карлсон'
