@@ -139,3 +139,11 @@ class TestBooksCollector:
 
         assert len(favorite) == 0
 
+    def test_get_list_of_favorites_books_true(self, collector):
+        book = '12 стульев'
+        collector.add_new_book(book)
+        collector.add_book_in_favorites(book)
+
+        favorite = collector.get_list_of_favorites_books()
+
+        assert len(favorite) > 0
