@@ -82,3 +82,12 @@ class TestBooksCollector:
         dict = collector.get_books_genre()
 
         assert dict
+
+    def test_get_books_for_children_true(self, collector):
+        book = 'Карлсон'
+        collector.add_new_book(book)
+        collector.set_book_genre(book, 'Мультфильмы')
+
+        books_for_children = collector.get_books_for_children()
+
+        assert book in books_for_children
