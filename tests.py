@@ -59,7 +59,7 @@ class TestBooksCollector:
 
         assert book_genre == collector.books_genre.get(name)
 
-    def test_get_books_with_specific_genre(self, collector):
+    def test_get_books_with_specific_genre_true(self, collector):
         amount_of_fantastic = 2
 
         collector.add_new_book('12 стульев')
@@ -75,3 +75,10 @@ class TestBooksCollector:
 
         assert len(specific_genre) == amount_of_fantastic
 
+    def test_get_books_genre_true(self, collector):
+        collector.add_new_book('12 стульев')
+        collector.set_book_genre('12 стульев', 'Комедии')
+
+        dict = collector.get_books_genre()
+
+        assert dict
