@@ -128,3 +128,14 @@ class TestBooksCollector:
         favorite = collector.get_list_of_favorites_books()
 
         assert len(favorite) == books_count
+
+    def test_delete_book_from_favorites_true(self, collector):
+        book = '12 стульев'
+        collector.add_new_book(book)
+        collector.add_book_in_favorites(book)
+        collector.delete_book_from_favorites(book)
+
+        favorite = collector.get_list_of_favorites_books()
+
+        assert len(favorite) == 0
+
