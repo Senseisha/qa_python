@@ -91,3 +91,12 @@ class TestBooksCollector:
         books_for_children = collector.get_books_for_children()
 
         assert book in books_for_children
+
+    def test_test_get_books_for_children_genre_in_genre_age_rating(self, collector):
+        book = 'Оно'
+        collector.add_new_book(book)
+        collector.set_book_genre(book, 'Ужасы')
+
+        books_for_children = collector.get_books_for_children()
+
+        assert book not in books_for_children
