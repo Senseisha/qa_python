@@ -37,7 +37,7 @@ class TestBooksCollector:
 
         assert collector.books_genre[name] == ''
 
-    def test_set_book_genre_if_book_in_books_genre_and_her_genre_in_genre_true(self, collector):
+    def test_set_book_genre(self, collector):
         name = '12 стульев'
         genre = 'Комедии'
         collector.add_new_book(name)
@@ -45,7 +45,7 @@ class TestBooksCollector:
 
         assert collector.books_genre.get(name) == genre
 
-    def test_test_set_book_genre_if_book_in_books_genre_and_her_genre_not_in_genre_true(self, collector):
+    def test_set_book_genre_books_genre_not_in_genre(self, collector):
         name = '12 стульев'
         genre = 'Мелодрама'
         collector.add_new_book(name)
@@ -53,14 +53,14 @@ class TestBooksCollector:
 
         assert collector.books_genre.get(name) != genre
 
-    def test_get_book_genre_true(self, collector):
+    def test_get_book_genre(self, collector):
         name = '12 стульев'
         collector.add_new_book(name)
         book_genre = collector.get_book_genre(name)
 
         assert book_genre == collector.books_genre.get(name)
 
-    def test_get_books_with_specific_genre_true(self, collector):
+    def test_get_books_with_specific_genre(self, collector):
         amount_of_fantastic = 2
 
         collector.add_new_book('12 стульев')
@@ -76,7 +76,7 @@ class TestBooksCollector:
 
         assert len(specific_genre) == amount_of_fantastic
 
-    def test_get_books_genre_true(self, collector):
+    def test_get_books_genre(self, collector):
         collector.add_new_book('12 стульев')
         collector.set_book_genre('12 стульев', 'Комедии')
 
@@ -84,7 +84,7 @@ class TestBooksCollector:
 
         assert '12 стульев' in dict
 
-    def test_get_books_for_children_true(self, collector):
+    def test_get_books_for_children(self, collector):
         book = 'Карлсон'
         collector.add_new_book(book)
         collector.set_book_genre(book, 'Мультфильмы')
@@ -93,7 +93,7 @@ class TestBooksCollector:
 
         assert book in books_for_children
 
-    def test_test_get_books_for_children_genre_in_genre_age_rating(self, collector):
+    def test_get_books_for_children_genre_in_genre_age_rating(self, collector):
         book = 'Оно'
         collector.add_new_book(book)
         collector.set_book_genre(book, 'Ужасы')
@@ -102,7 +102,7 @@ class TestBooksCollector:
 
         assert book not in books_for_children
 
-    def test_add_book_in_favorites_true(self, collector):
+    def test_add_book_in_favorites(self, collector):
         book = '12 стульев'
         collector.add_new_book(book)
         collector.add_book_in_favorites(book)
@@ -120,7 +120,7 @@ class TestBooksCollector:
         ]
     )
 
-    def test_add_book_in_favorites_true_add_a_few_books_true(self, collector, name, books_count):
+    def test_add_book_in_favorites_add_a_few_books(self, collector, name, books_count):
         for book_name in name:
             collector.add_new_book(book_name)
             collector.add_book_in_favorites(book_name)
@@ -129,7 +129,7 @@ class TestBooksCollector:
 
         assert len(favorite) == books_count
 
-    def test_delete_book_from_favorites_true(self, collector):
+    def test_delete_book_from_favorites(self, collector):
         book = '12 стульев'
         collector.add_new_book(book)
         collector.add_book_in_favorites(book)
@@ -139,7 +139,7 @@ class TestBooksCollector:
 
         assert len(favorite) == 0
 
-    def test_get_list_of_favorites_books_true(self, collector):
+    def test_get_list_of_favorites_books(self, collector):
         book = '12 стульев'
         collector.add_new_book(book)
         collector.add_book_in_favorites(book)
